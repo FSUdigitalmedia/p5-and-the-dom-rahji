@@ -1,17 +1,41 @@
 var myParagraph;
+var myButton;
+var mySlider;
+var picture;
 
 function setup() {
   myParagraph = createP("html");
   myParagraph.position(0, 0);
   myParagraph.mouseClicked(makeRed);
+
+  myButton = createButton("click me");
+  myButton.mouseClicked(clickedButton);
+
+  mySlider = createSlider(0, 255, 20, 10);
+  mySlider.id("theSlider");
+
+  picture = select("img");
+  picture.doubleClicked(clickedImage);
 }
 
 function draw() {
-  myParagraph.position(frameCount % 200, 0);
+   myParagraph.position(frameCount % 200, 40);
+   myParagraph.style("font-size", mySlider.value() + "px");
+   // myParagraph.position(mouseX,mouseY);
+   mySlider.position(0 ,300);
 }
 
 function makeRed() {
   myParagraph.style("color", "red");
+}
+
+function clickedButton() {
+   //select('#second').style("font-size", "xx-small");
+   select("img").style("width","100px");
+}
+
+function clickedImage() {
+   select("#second").hide();
 }
 
 /*
